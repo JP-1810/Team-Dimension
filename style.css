@@ -1,4 +1,3 @@
-/* === Base Reset === */
 * {
   margin: 0;
   padding: 0;
@@ -576,5 +575,112 @@ footer{
   color: #333;
   margin: 3px 0;
 }
+.fade-in-section {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+  will-change: opacity, transform;
+}
 
+.fade-in-section.is-visible {
+  opacity: 1;
+  transform: none;
+}
+/* ========== Scroll Section Effects ========== */
+.fade-in-section {
+  opacity: 0;
+  transform: scale(0.95) translateY(40px);
+  filter: blur(5px);
+  transition: all 0.8s ease;
+  visibility: hidden;
+  z-index: 1;
+}
 
+.fade-in-section.is-visible {
+  opacity: 1;
+  transform: scale(1) translateY(0);
+  filter: blur(0);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+  z-index: 10;
+  visibility: visible;
+}
+
+.fade-in-section.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+  filter: blur(0);
+  visibility: visible;
+}
+
+@media (max-width: 768px) {
+  .hero {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+
+  .hero-left h1 {
+    font-size: 2.5rem;
+  }
+
+  .hero-right .circle-img {
+    width: 200px;
+    height: 200px;
+  }
+
+  .nav-links {
+    flex-direction: column;
+    gap: 10px;
+  }
+}
+
+.nav-links a {
+  font-size: 1.1rem;
+}
+
+.nav-links a:hover {
+  color: #A1AAD8; /* Highlight color on hover */
+}
+
+.nav-links a.active {
+  color: #A1AAD8; /* Active link color */
+  border-bottom: 2px solid #A1AAD8; /* Underline for active link */
+}
+
+.nav-links a {
+  font-size: 1.1rem;
+}
+.nav-links a:hover {
+  color: #A1AAD8; /* Highlight color on hover */
+}
+.nav-links a.active {
+  color: #A1AAD8; /* Active link color */
+  border-bottom: 2px solid #A1AAD8; /* Underline for active link */
+}
+/* Fixes for About and Team section layout */
+#about,
+#team {
+  min-height: 100vh;
+  padding: 100px 20px;
+  display: block; /* removes awkward centering */
+
+}
+
+/* Optional: apply scroll margin to all sections */
+section {
+  scroll-margin-top: 80px; /* offset from sticky nav */
+}
+
+/* Sticky navbar setup */
+.navbar {
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+ /* or whatever your navbar color is */
+}
+
+/* Smooth scroll behavior */
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 80px; /* offset for sticky nav */
+}
