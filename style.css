@@ -659,7 +659,9 @@ footer{
 }
 /* Fixes for About and Team section layout */
 #about,
-#team {
+#team,
+#journey,
+#skills {
   min-height: 100vh;
   padding: 100px 20px;
   display: block; /* removes awkward centering */
