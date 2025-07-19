@@ -30,7 +30,7 @@
     </nav>
   </header>
 
-  <section class="hero" >
+  <section class="hero fade-in-section">
     <div class="hero-left">
       <h2>WELCOME TO</h2>
       <h1><span><strong>DIM<span class="highlight1">ENS</span><span class="highlight2">ION</span></strong></span></h1>
@@ -44,7 +44,7 @@
     </div>
   </section>
 <!-- About Section-->
- <section class="about"  >
+<section class="about fade-in-section">
   <p class="intro">Hello there</p>
   <h2 class="section-title"> <span class="highlight">WE ARE DIMENSION</span></h2>
   <p class="about-text">
@@ -62,7 +62,7 @@
 
 
  <!-- Team Section -->
-<div class="team-background"  >
+<div class="team-background fade-in-section">
   <section class="team-section">
     <h2>MEET OUR TEAM</h2>
     <div class="team-container">
@@ -113,7 +113,7 @@
 
 
 <!-- Our Project  -->
-<section class="projects-section" >
+<section class="projects-section fade-in-section">
   <h2 class="projects-title">OUR PROJECTS</h2>
   <div class="projects-grid">
     <div class="project-card">
@@ -190,7 +190,7 @@
 
 
 <!--Our journey -->
-<section class="journey-section"  >
+<section class="journey-section fade-in-section">
   <h2 class="journey-title">OUR JOURNEY</h2>
   <div class="journey-box">
     <p>
@@ -219,7 +219,7 @@
 
 
   <!-- Skills Section -->
-  <section class="skills-section" >
+  <section class="skills-section fade-in-section">
   <h2 class="skills-title">SKILLS AND TOOLS</h2>
   <div class="skills-buttons">
     <button>Java</button>
@@ -235,7 +235,7 @@
 
   <!-- Contact Form -->
 
-<section class="contact-form-section" >
+<section class="contact-form-section fade-in-section">
   <p class="contact-invite">
     Got a cool idea or project in mind? We’d love to help you build it.<br />
     Submit the form below and we’ll get in touch!
@@ -322,7 +322,26 @@
     <p>&copy; 2025 Dimension. All rights reserved.</p>
     <p>Designed and Developed by Team Dimension</p>
 </footer>
+  
+   <script>
+document.addEventListener("DOMContentLoaded", function () {
+  const sections = document.querySelectorAll(".fade-in-section");
+
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((entry) => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add("is-visible");
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.15 });
+
+  sections.forEach((section) => {
+    observer.observe(section);
+  });
+});
+</script>
+
 
 </body>
 </html>
-
