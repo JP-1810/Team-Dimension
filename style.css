@@ -38,6 +38,7 @@ body {
   align-items: center;
   gap: 10px;
   font-size: 1.2rem;
+  padding-right: 6;
 }
 
 .logo-img {
@@ -130,7 +131,7 @@ color:#A1AAD8
   flex-direction: column;
   justify-content: center;
   max-width: 600px;
-  padding-left: 85px; 
+  padding-left: 100px; 
   padding-right: 3rem;
 }
 
@@ -227,13 +228,24 @@ color:#A1AAD8
   }
 }
 
-
+.hero-right{
+ padding-right: 60px;
+}
+.circle-image {
+  position: absolute;
+  right: 1rem;
+  top: 50%;
+  transform: translateY(-50%);
+}
 .hero-right .circle-img {
   width: 250px;
   height: 250px;
   border-radius: 50%;
   border: 5px solid white;
+  margin-right: 10px; /* decrease or adjust as needed */
+  padding-right: 0; /* remove if unnecessary */
 }
+
 
 /* === About Section ===*/
 .about {
@@ -1079,4 +1091,5 @@ html {
     font-size: 0.9rem;
   }
 }
+
 
