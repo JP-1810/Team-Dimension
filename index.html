@@ -12,28 +12,29 @@
 
 </head>
 <body>
+<div class="navbar">
+  <div class="logo">
+    <img src="images/logo.jpg" class="logo-img" />
+     <span><strong><span class="highlight1">  DIM</span>ENS<span class="highlight2">ION</span></strong></span>
+  </div>
+  <button class="hamburger" onclick="toggleMenu()">☰</button>
+  <ul class="nav-links" id="navLinks">
+    <li><a href="#home">Home</a></li>
+    <li><a href="#about">About</a></li>
+     <li><a href="#team">Team</a></li>
+    <li><a href="#projects">Projects</a></li>
+    <li><a href="#skills">Skills and Tools</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+</div>
 
- <header class="navbar">
-    <div class="logo"> 
-      <img src="images/logo.jpg" alt="Logo" class="logo-img"/>
-      <span><strong>DIM<span class="highlight1">ENS</span><span class="highlight2">ION</span></strong></span>
-    </div>
-    <nav>
-      <ul class="nav-links">
-        <li><a href="#home">Home</a></li>
-        <li><a href="#about">About</a></li>
-        <li><a href="#team">Team</a></li>
-        <li><a href="#projects">Projects</a></li>
-        <li><a href="#skills">Skills</a></li>
-        <li><a href="#contact">Contact</a></li>
-      </ul>
-    </nav>
-  </header>
 
-  <section class="hero fade-in-section">
+ 
+
+  <section class="hero fade-in-section" id="home">
     <div class="hero-left">
       <h2>WELCOME TO</h2>
-      <h1><span><strong>DIM<span class="highlight1">ENS</span><span class="highlight2">ION</span></strong></span></h1>
+      <h1><span><strong><span class="highlight1">DIM</span>ENS<span class="highlight2">ION</span></strong></span></h1>
       <div class="buttons">
         <a href="#contact" class="btn" >Got a Project?</a>
         <a href="#about" class="btn">More About Us</a>
@@ -241,7 +242,8 @@
     Submit the form below and we’ll get in touch!
   </p>
 
-  <form class="contact-form">
+ <form class="contact-form" action="https://formspree.io/f/meozeaag" method="POST" enctype="multipart/form-data">
+  <input type="hidden" name="_captcha" value="false" />
     <label>Name:</label>
     <input type="text" name="name" required />
 

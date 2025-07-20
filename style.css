@@ -76,19 +76,79 @@ color:#A1AAD8
 }
 
 .btn {
-  background-color: #63a9df;
+  position: relative; /* Needed for ::before */
+  background-color: rgba(0, 0, 0, 0.6); /* fallback bg */
   color: white;
+  font-size: 16px;
+  font-weight: 600;
+  text-transform: uppercase;
   padding: 0.8rem 1.5rem;
   border: none;
   text-decoration: none;
   border-radius: 10px;
-  font-weight: 600;
-  transition: background 0.3s ease;
+  cursor: pointer;
+  overflow: hidden; /* ensures ::before stays inside */
+  z-index: 1;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+  text-shadow: 1px 1px 2px rgba(0,0,0,0.5);
+  transition: transform 0.3s ease;
+}
+
+/* Add gradient layer */
+.btn::before {
+  content: "";
+  display: block;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  border-radius: 10px;
+  background: linear-gradient(
+    320deg,
+    rgba(0, 140, 255, 0.7),
+    rgba(128, 0, 128, 0.3)
+  );
+  z-index: 0;
+  transition: background 3s;
+}
+
+/* Keep the button text above the gradient */
+.btn span {
+  position: relative;
+  z-index: 2;
+}
+
+/* Hover effect: animate gradient & slight lift */
+.btn:hover::before {
+  animation: rotate 1s;
+  transition: all 0.5s;
 }
 
 .btn:hover {
-  background-color: #4d93d0;
+  transform: translateY(-3px); /* small lift */
 }
+
+/* Optional: keyframes for rotate animation */
+@keyframes rotate {
+  0% {
+    filter: hue-rotate(0deg);
+  }
+  100% {
+    filter: hue-rotate(360deg);
+  }
+}
+
+@media screen and (max-width: 768px) {
+  #bt {
+    font-size: 15px;
+    padding: 15px 25px;
+    width: 90%;
+    margin: 20px auto;
+    display: block;
+  }
+}
+
 
 .hero-right .circle-img {
   width: 250px;
@@ -315,7 +375,7 @@ color:#A1AAD8
 /*===Our Journey ===*/
 .journey-section {
   background-color: #e0f3e4; /* light greenish background */
-  padding: 60px 20px;
+  padding: 60px 30px;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -514,15 +574,34 @@ color:#A1AAD8
     align-items: center;
     gap: 10px;
 }
-.contact-icons a {
-    color: #6a0dad;
-    text-decoration: none;
-    font-size: 1.2rem;
-    transition: color 0.3s ease;
-}
+
 .contact-icons a:hover {
     color: #4a0072;
 }
+.contact-column {
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.contact-column img {
+  width: 40px;
+  height: 40px;
+  object-fit: contain;
+  margin-bottom: 10px;
+}
+
+.contact-links a {
+  display: block;
+  color: #0000EE;
+  font-size: 0.95rem;
+  text-decoration: none;
+  margin-bottom: 4px;
+}
+
+.contact-links a:hover {
+  text-decoration: underline;
+}
+
 
 /* === Footer === */
 
@@ -647,16 +726,7 @@ footer{
   border-bottom: 2px solid #A1AAD8; /* Underline for active link */
 }
 
-.nav-links a {
-  font-size: 1.1rem;
-}
-.nav-links a:hover {
-  color: #A1AAD8; /* Highlight color on hover */
-}
-.nav-links a.active {
-  color: #A1AAD8; /* Active link color */
-  border-bottom: 2px solid #A1AAD8; /* Underline for active link */
-}
+
 /* Fixes for About and Team section layout */
 #about,
 #team,
@@ -684,5 +754,231 @@ section {
 /* Smooth scroll behavior */
 html {
   scroll-behavior: smooth;
-  scroll-padding-top: 80px; /* offset for sticky nav */
+  scroll-padding-top: 80px; /* offset for sticky nav */
 }
+
+.hamburger {
+  display: none;
+  background: none;
+  font-size: 1.8rem;
+  border: none;
+  color: white;
+  cursor: pointer;
+  z-index: 1001; /* Ensure hamburger is above other elements */
+
+}
+.nav-links {
+  display: flex;
+  gap: 20px;
+}
+
+.nav-links li {
+  list-style: none;
+}
+.nav-links li a {
+  text-decoration: none;
+  color: white;
+  font-weight: bold;
+  transition: color 0.3s ease;
+}
+.nav-links li a:hover {
+  color: #A1AAD8; /* Highlight color on hover */
+}
+
+/* Responsive adjustments for navbar */
+@media (max-width: 768px) {
+  .navbar {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .nav-links {
+    display: none; /* Hide links by default */
+    flex-direction: column;
+    width: 100%;
+    padding: 1rem;
+    background-color: #47629B; /* Match navbar background */
+  }
+
+  .hamburger {
+    display: block; /* Show hamburger icon on mobile */
+  }
+
+  .nav-links.show {
+    display: flex; /* Show links when hamburger is clicked */
+  }
+}
+/* Hide nav-links on mobile by default */
+@media (max-width: 768px) {
+  .hamburger {
+    display: block;
+  }
+
+  .nav-links {
+    display: none;
+    flex-direction: column;
+    gap: 10px;
+    background-color: #47629B;
+    width: 100%;
+    padding: 1rem;
+  }
+
+  .nav-links.show {
+    display: flex;
+  }
+
+  .nav-links li {
+    text-align: center;
+  }
+}
+
+/* Responsive adjustments for hero section */
+@media (max-width: 768px) {
+  .hero {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+
+  .hero-left h1 {
+    font-size: 2.5rem;
+  }
+
+  .hero-right .circle-img {
+    width: 200px;
+    height: 200px;
+  }
+}
+
+/* Responsive adjustments for team section */
+@media (max-width: 768px) {
+  .team-container {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .team-card {
+    width: 90%;
+    max-width: 300px;
+  }
+
+  .avatar {
+    width: 120px;
+    height: 120px;
+  }
+}   
+/* Responsive adjustments for projects section */
+@media (max-width: 768px) {
+  .projects-grid {
+    grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+    gap: 20px;
+  }
+
+  .project-card {
+    width: 120px;
+  }
+
+  .project-card img {
+    height: 80px;
+  }
+}
+
+/* Responsive adjustments for contact section */
+@media (max-width: 768px) { 
+  .contact-form {
+    width: 90%;
+    max-width: 400px;
+  }
+
+  .contact-form input,
+  .contact-form textarea {
+    font-size: 0.9rem;
+  }
+
+  .form-buttons button {
+    width: 100%;
+    padding: 10px;
+  }
+}
+/* Responsive adjustments for skills section */
+@media (max-width: 768px) {
+  .skills-buttons button {
+    width: 100%;
+    padding: 12px;
+    font-size: 1rem;
+  }
+
+  .skills-title {
+    font-size: 1.8rem;
+  }
+}
+/* Responsive adjustments for journey section */
+@media (max-width: 768px) {
+  .journey-section {
+    padding: 40px 20px;
+  }
+
+  .journey-title {
+    font-size: 1.8rem;
+  }
+
+  .journey-box {
+    width: 90%;
+    max-width: 500px;
+  }
+
+  .journey-box p {
+    font-size: 1rem;
+  }
+}
+
+/* Responsive adjustments for footer */
+@media (max-width: 768px) { 
+  footer {
+    font-size: 0.8rem;
+    padding: 15px;
+  }
+}
+
+/* Responsive adjustments for contact section */
+@media (max-width: 768px) {
+  .contact-section {
+    padding: 1.5rem;
+  }
+
+  .contact-icons {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .contact-icons a {
+    font-size: 0.9rem;
+  }
+}
+/* Responsive adjustments for contact section */
+@media (max-width: 768px) {
+  .contact-form-section {
+    padding: 40px 20px;
+  }
+
+  .contact-invite {
+    font-size: 0.9rem;
+  }
+
+  .contact-form {
+    width: 90%;
+    max-width: 400px;
+  }
+
+  .contact-form input,
+  .contact-form textarea {
+    font-size: 0.9rem;
+  }
+
+  .form-buttons button {
+    width: 100%;
+    padding: 10px;
+    font-size: 0.9rem;
+  }
+}
+

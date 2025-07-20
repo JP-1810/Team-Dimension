@@ -15,3 +15,9 @@ document.addEventListener("DOMContentLoaded", function () {
     observer.observe(section);
   });
 });
+
+  function toggleMenu() {
+    const nav = document.getElementById('navLinks');
+    nav.classList.toggle('show');
+  }
+
