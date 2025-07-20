@@ -6,9 +6,20 @@
 
 body {
   margin: 0;
-  font-family: 'Segoe UI', sans-serif;
+  font-family: 'Outfit', 'Poppins', sans-serif;
+    background-image: url('images/home-bg.png');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
   background-color: #061C42;
   color: white;
+}
+
+.dimension {
+  font-family: 'Outfit', 'Poppins', sans-serif;
+  font-size: 11.5rem;
+  
 }
 
 .navbar {
@@ -19,6 +30,8 @@ body {
   background-color: #47629B;
   box-shadow:0 2px 10px rgba(0,0,0,0.1);
 }
+
+
 
 .logo {
   display: flex;
@@ -38,6 +51,13 @@ color:#A1AAD8
 .highlight2 {
   color: #5d7eff;
 }
+.highlight11 {
+  font-weight: 800;
+  font-size: 6rem;
+  background: linear-gradient(90deg, #75CEEA, #234A89, #F9A465);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
 
 .nav-links {
   display: flex;
@@ -51,13 +71,67 @@ color:#A1AAD8
   font-weight: bold;
 }
 
-.hero {
+  .hero {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  padding: 5rem 8%;
+  gap: 3rem;
+  position: relative;
+  min-height: 100vh;
+    background-image: url('images/Picture1.png'); /* or 'images/Picture1.png' */
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  color: white;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 3rem 5%;
-  min-height: 90vh;
-  flex-wrap: wrap;
+  padding: 80px 60px;
+  min-height: 100vh;
+  position: relative;
+  z-index: 1
+}
+
+.hero::before {
+  content: "";
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  background-color: rgba(0, 0, 0, 0.5); /* optional dark overlay */
+  z-index: -1;
+}
+.tagline {
+  font-size: 1.4rem;
+  font-weight: 500;
+  color: rgba(255, 255, 255, 0.85);
+  margin: 15px 0 30px;
+  letter-spacing: 1px;
+  text-shadow: 0 2px 5px rgba(0,0,0,0.3);
+  animation: fadeInUp 1s ease-in-out;
+}
+
+/* Optional smooth fade-in */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.hero-left {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  max-width: 600px;
+  padding-left: 85px; 
+  padding-right: 3rem;
 }
 
 .hero-left h2 {
@@ -76,61 +150,64 @@ color:#A1AAD8
 }
 
 .btn {
-  position: relative; /* Needed for ::before */
-  background-color: rgba(0, 0, 0, 0.6); /* fallback bg */
+  position: relative;
+  background: linear-gradient(135deg, rgba(10, 29, 71, 0.9), rgba(28, 60, 124, 0.9)); /* Base gradient */
   color: white;
   font-size: 16px;
   font-weight: 600;
   text-transform: uppercase;
+  text-decoration: none;
   padding: 0.8rem 1.5rem;
   border: none;
-  text-decoration: none;
   border-radius: 10px;
   cursor: pointer;
-  overflow: hidden; /* ensures ::before stays inside */
+  overflow: hidden; /* keeps gradient inside */
   z-index: 1;
-  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
-  text-shadow: 1px 1px 2px rgba(0,0,0,0.5);
+  box-shadow: 0 5px 15px rgba(16, 40, 65, 0.4);
+  text-shadow: 1px 1px 2px rgba(0,0,0,0.3);
+  backdrop-filter: blur(6px);
   transition: transform 0.3s ease;
+  perspective: 30rem;
 }
 
-/* Add gradient layer */
+/* Gradient animation layer */
 .btn::before {
   content: "";
-  display: block;
   position: absolute;
-  width: 100%;
-  height: 100%;
-  top: 0;
-  left: 0;
+  inset: 0;
   border-radius: 10px;
   background: linear-gradient(
-    320deg,
-    rgba(0, 140, 255, 0.7),
-    rgba(128, 0, 128, 0.3)
+    135deg,
+    #0b2c61,
+    #1a4d8f,
+    #102841,
+    #295e95
   );
-  z-index: 0;
-  transition: background 3s;
+  opacity: 0.7;
+  filter: blur(8px);
+  z-index: -1;
+  transform: scale(1.2);
+  animation: rotateGradient 6s linear infinite;
+  animation-play-state: paused; /* only animate on hover */
 }
 
-/* Keep the button text above the gradient */
+/* Keep text above */
 .btn span {
   position: relative;
   z-index: 2;
 }
 
-/* Hover effect: animate gradient & slight lift */
+/* Hover effects */
 .btn:hover::before {
-  animation: rotate 1s;
-  transition: all 0.5s;
+  animation-play-state: running; /* start gradient motion */
 }
 
 .btn:hover {
-  transform: translateY(-3px); /* small lift */
+  transform: translateY(-3px); /* slight lift */
 }
 
-/* Optional: keyframes for rotate animation */
-@keyframes rotate {
+/* Smooth rotation-like hue shift */
+@keyframes rotateGradient {
   0% {
     filter: hue-rotate(0deg);
   }
@@ -139,8 +216,9 @@ color:#A1AAD8
   }
 }
 
+/* Optional: smaller screens */
 @media screen and (max-width: 768px) {
-  #bt {
+  .btn {
     font-size: 15px;
     padding: 15px 25px;
     width: 90%;
@@ -159,6 +237,11 @@ color:#A1AAD8
 
 /* === About Section ===*/
 .about {
+  background-image: url('images/about-bg.png'); /* Replace with your background image */
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+
   background-color: #455589; /* Adjust this to match your Figma color */
   padding: 4rem 2rem;
   text-align: center;
@@ -178,7 +261,7 @@ color:#A1AAD8
 }
 
 .section-title .highlight {
-  color: #A1AAD8; /* Same as logo text gradient */
+  color: #394caa; /* Same as logo text gradient */
   text-decoration: underline;
 }
 
@@ -249,6 +332,10 @@ color:#A1AAD8
 /* === Team Section === */
 
 .team-background {
+  background-image: url('images/team-bg.png'); /* Replace with your background image */
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
   background-color: #FFD0C2;
   padding: 60px 20px;
 }
@@ -374,6 +461,10 @@ color:#A1AAD8
 
 /*===Our Journey ===*/
 .journey-section {
+  background-image: url('images/journey-bg.png'); /* Replace with your background image */
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
   background-color: #e0f3e4; /* light greenish background */
   padding: 60px 30px;
   display: flex;
@@ -388,6 +479,7 @@ color:#A1AAD8
   color: #166534; /* dark green */
   text-decoration: underline;
   margin-bottom: 30px;
+  text-align: center;
 }
 
 .journey-box {
@@ -397,6 +489,12 @@ color:#A1AAD8
   border-radius: 12px;
   border: 1px solid #999;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+  margin: 0 auto;
+  text-align: center;
+  width: 100%;
+  max-width: 600px;
+  transition: transform 0.3s ease;
+
 }
 
 .journey-box p {

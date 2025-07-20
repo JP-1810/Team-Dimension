@@ -11,7 +11,6 @@
 
 
 </head>
-<body>
 <div class="navbar">
   <div class="logo">
     <img src="images/logo.jpg" class="logo-img" />
@@ -31,19 +30,28 @@
 
  
 
-  <section class="hero fade-in-section" id="home">
-    <div class="hero-left">
-      <h2>WELCOME TO</h2>
-      <h1><span><strong><span class="highlight1">DIM</span>ENS<span class="highlight2">ION</span></strong></span></h1>
-      <div class="buttons">
-        <a href="#contact" class="btn" >Got a Project?</a>
-        <a href="#about" class="btn">More About Us</a>
-      </div>
+<section class="hero fade-in-section" id="home">
+  <div class="hero-left">
+    <h2>WELCOME TO</h2>
+    <h1 class="dimension">
+      <span><strong><span class="highlight11">DIMENSION</strong></span>
+    </h1>
+
+    <!-- Tagline -->
+    <p class="tagline">Beyond Limits. Beyond Dimensions.</p>
+
+    <div class="buttons">
+      <a href="#contact" class="btn">Got a Project?</a>
+      <a href="#about" class="btn">More About Us</a>
     </div>
-    <div class="hero-right">
-      <img src="images/logo.jpg" alt="Dimension Art" class="circle-img" />
-    </div>
-  </section>
+  </div>
+
+  <div class="hero-right">
+    <img src="images/logo.jpg" alt="Dimension Art" class="circle-img" />
+  </div>
+</section>
+
+
 <!-- About Section-->
 <section class="about fade-in-section" id="about">
   <p class="intro">Hello there</p>
@@ -271,8 +279,6 @@
     <label>Project Timeline:</label>
     <input type="date" name="timeline" />
 
-    <label>Upload Project File:</label>
-    <input type="file" name="file" />
 
     <label>Additional Comments:</label>
     <textarea name="comments" rows="4" placeholder="Any additional information or comments"></textarea>
