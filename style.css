@@ -7,7 +7,7 @@
 body {
   margin: 0;
   font-family: 'Outfit', 'Poppins', sans-serif;
-    background-image: url('images/home-bg.png');
+  background-image: url('images/home-bg.png');
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
@@ -19,7 +19,6 @@ body {
 .dimension {
   font-family: 'Outfit', 'Poppins', sans-serif;
   font-size: 11.5rem;
-  
 }
 
 .navbar {
@@ -649,7 +648,7 @@ color:#A1AAD8
   font-size: 1rem;
   border-radius: 10px;
   cursor: pointer;
-  transition: background 0.3s ease;
+  transition:  0.3s ease;
 }
 
 .form-buttons button:hover {
@@ -1162,35 +1161,35 @@ html {
   }
 }
 
-/* Mobile phones */
+
 @media (max-width: 480px) {
-  body {
-    font-size: 14px;
+  .hero-left {
+    padding-left: 20px;
+    padding-right: 20px;
   }
-  .hero-left h1 {
-    font-size: 1.8rem;
+
+  .dimension {
+    font-size: 5rem;
   }
+
   .hero-left h2 {
     font-size: 1.2rem;
   }
+
+  .hero-left h1 {
+    font-size: 2rem;
+  }
+
   .tagline {
     font-size: 1rem;
   }
+
   .circle-img {
-    width: 150px;
-    height: 150px;
-  }
-  .projects-grid {
-    grid-template-columns: 1fr;
-  }
-  .project-card {
-    width: 100%;
-  }
-  .team-card {
-    width: 90%;
-  }
-  .journey-box {
-    padding: 20px;
+    width: 150px !important;
+    height: 150px !important;
+    position: static;
+    transform: none;
+    margin-top: 20px;
   }
 }
 
