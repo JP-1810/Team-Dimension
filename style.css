@@ -131,7 +131,7 @@ color:#A1AAD8
   flex-direction: column;
   justify-content: center;
   max-width: 600px;
-  padding-left: 100px; 
+  padding-left: 80px; 
   padding-right: 3rem;
 }
 
@@ -1092,4 +1092,108 @@ html {
   }
 }
 
+/* === Mobile Responsiveness === */
+@media (max-width: 1024px) {
+  .hero-left {
+    padding-left: 20px;
+    padding-right: 20px;
+    text-align: center;
+  }
+  .hero-left h1 {
+    font-size: 2.5rem;
+  }
+  .hero-left h2 {
+    font-size: 1.5rem;
+  }
+  .hero-right {
+    padding-right: 20px;
+    text-align: center;
+  }
+  .hero-right .circle-img {
+    width: 200px;
+    height: 200px;
+  }
+}
+
+/* Tablets and smaller screens */
+@media (max-width: 768px) {
+  .navbar {
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 1rem;
+  }
+  .nav-links {
+    flex-direction: column;
+    gap: 10px;
+    width: 100%;
+  }
+  .hero {
+    flex-direction: column;
+    padding: 40px 20px;
+    text-align: center;
+  }
+  .hero-left, .hero-right {
+    max-width: 100%;
+    padding: 0;
+  }
+  .hero-left h1 {
+    font-size: 2rem;
+  }
+  .hero-left h2 {
+    font-size: 1.3rem;
+  }
+  .circle-img {
+    width: 180px;
+    height: 180px;
+    margin: 20px auto 0;
+  }
+  .buttons {
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+  }
+  .btn {
+    width: 90%;
+    text-align: center;
+  }
+  .projects-grid {
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+  }
+  .team-container {
+    flex-direction: column;
+  }
+}
+
+/* Mobile phones */
+@media (max-width: 480px) {
+  body {
+    font-size: 14px;
+  }
+  .hero-left h1 {
+    font-size: 1.8rem;
+  }
+  .hero-left h2 {
+    font-size: 1.2rem;
+  }
+  .tagline {
+    font-size: 1rem;
+  }
+  .circle-img {
+    width: 150px;
+    height: 150px;
+  }
+  .projects-grid {
+    grid-template-columns: 1fr;
+  }
+  .project-card {
+    width: 100%;
+  }
+  .team-card {
+    width: 90%;
+  }
+  .journey-box {
+    padding: 20px;
+  }
+}
 
